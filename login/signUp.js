@@ -6,7 +6,7 @@ function makeLogin(){
     // upload user details
     var user = JSON.parse(localStorage.getItem('userLoginDetails'));
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://localhost:3003/api/post', true);
+    xhr.open('POST', 'https://smebackendmain.onrender.com/api/post', true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify({
                 email:email,

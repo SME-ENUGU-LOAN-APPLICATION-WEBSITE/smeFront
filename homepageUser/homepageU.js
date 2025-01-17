@@ -9,7 +9,7 @@ function checkLogin(){
     else{
         var user = JSON.parse(localStorage.getItem('user'));
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'http://localhost:3003/api/checkUser', true);
+        xhr.open('POST', 'https://smebackendmain.onrender.com/api/checkUser', true);
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.send(JSON.stringify({username: user.username, password: user.password}));
         xhr.onreadystatechange = function(){
@@ -65,7 +65,7 @@ function adminResponse(){
         if(localStorage.getItem('user')){
             var user = JSON.parse(localStorage.getItem('user'));
             var xhr = new XMLHttpRequest();
-            xhr.open('POST', 'http://localhost:3003/api/checkUser', true);
+            xhr.open('POST', 'https://smebackendmain.onrender.com/api/checkUser', true);
             xhr.setRequestHeader('Content-Type', 'application/json');
             xhr.send(JSON.stringify({username: user.username, password: user.password}));
             xhr.onreadystatechange = function(){
@@ -92,7 +92,7 @@ function getApplications(){
             if(localStorage.getItem('user')){
                 var user = JSON.parse(localStorage.getItem('user'));
                 var xhr = new XMLHttpRequest();
-                xhr.open('POST', 'http://localhost:3003/api/getAllApplic', true);
+                xhr.open('POST', 'https://smebackendmain.onrender.com/api/getAllApplic', true);
                 xhr.setRequestHeader('Content-Type', 'application/json');
                 xhr.send(JSON.stringify({
                     username: user.username
@@ -349,7 +349,7 @@ if(idCardLink && businessCertificateLink && bankStatementLink && BVN && LoanAmou
     if(localStorage.getItem('user')){
         var user = JSON.parse(localStorage.getItem('user'));
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'http://localhost:3003/api/uploadDocument', true);
+        xhr.open('POST', 'https://smebackendmain.onrender.com/api/uploadDocument', true);
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.send(JSON.stringify({
             username: user.username,
@@ -384,7 +384,7 @@ function updatePending(applicID){
     // update loan status to pending
     var user = JSON.parse(localStorage.getItem('userLoginDetails'));
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://localhost:3003/api/adminChangeOne', true);
+    xhr.open('POST', 'https://smebackendmain.onrender.com/api/adminChangeOne', true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify({
         id:applicID,

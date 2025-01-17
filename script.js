@@ -27,7 +27,7 @@ function checkLogin(){
     else{
         var user = JSON.parse(localStorage.getItem('user'));
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'http://localhost:3003/api/checkUser', true);
+        xhr.open('POST', 'https://smebackendmain.onrender.com/api/checkUser', true);
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.send(JSON.stringify({username: user.username, password: user.password}));
         xhr.onreadystatechange = function(){
@@ -83,7 +83,7 @@ function adminResponse(){
         if(localStorage.getItem('user')){
             var user = JSON.parse(localStorage.getItem('user'));
             var xhr = new XMLHttpRequest();
-            xhr.open('POST', 'http://localhost:3003/api/checkUser', true);
+            xhr.open('POST', 'https://smebackendmain.onrender.com/api/checkUser', true);
             xhr.setRequestHeader('Content-Type', 'application/json');
             xhr.send(JSON.stringify({username: user.username, password: user.password}));
             xhr.onreadystatechange = function(){
@@ -132,7 +132,7 @@ function businessShow(){
     // if(fullname && dateofbirth && gender && email && phone && residentAddress && LGA && state){
     //     var user = JSON.parse(localStorage.getItem('userLoginDetails'));
     //     var xhr = new XMLHttpRequest();
-    //     xhr.open('POST', 'http://localhost:3003/api/businessShow', true);
+    //     xhr.open('POST', 'https://smebackendmain.onrender.com/api/businessShow', true);
     //     xhr.setRequestHeader('Content-Type', 'application/json');
     //     xhr.send(JSON.stringify({
     //         fullname: fullname, 
@@ -648,7 +648,7 @@ function submitForm(){
         // console.log("regulatoryInfo is",regulatoryInfo);
         var user = JSON.parse(localStorage.getItem('userLoginDetails'));
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'http://localhost:3003/api/businessShow', true);
+        xhr.open('POST', 'https://smebackendmain.onrender.com/api/businessShow', true);
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.send(JSON.stringify({
             personalInfo: personalInfo,

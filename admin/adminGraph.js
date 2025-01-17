@@ -20,7 +20,7 @@ function getApplications() {
     if (localStorage.getItem('user')) {
       const user = JSON.parse(localStorage.getItem('user'));
       const xhr = new XMLHttpRequest();
-      xhr.open('POST', 'http://localhost:3003/api/adminGetAll', true);
+      xhr.open('POST', 'https://smebackendmain.onrender.com/api/adminGetAll', true);
       xhr.setRequestHeader('Content-Type', 'application/json');
       xhr.send(JSON.stringify({ username: user.username }));
 
@@ -230,7 +230,7 @@ function getApplicationsAndRenderChart() {
     if (localStorage.getItem('user')) {
         const user = JSON.parse(localStorage.getItem('user'));
         const xhr = new XMLHttpRequest();
-        xhr.open('POST', 'http://localhost:3003/api/adminGetAll', true);
+        xhr.open('POST', 'https://smebackendmain.onrender.com/api/adminGetAll', true);
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.send(JSON.stringify({ username: user.username }));
 
@@ -332,7 +332,7 @@ function getApplicationsAndRenderBarChart() {
     if (localStorage.getItem('user')) {
         const user = JSON.parse(localStorage.getItem('user'));
         const xhr = new XMLHttpRequest();
-        xhr.open('POST', 'http://localhost:3003/api/adminGetAll', true);
+        xhr.open('POST', 'https://smebackendmain.onrender.com/api/adminGetAll', true);
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.send(JSON.stringify({ username: user.username }));
 
