@@ -1,0 +1,14 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: Inter;
+}
+@font-face {
+    font-family: Inter;
+    src: url(Inter/Inter-VariableFont_opsz\,wght.ttf);
+  }
+  @font-face {
+    font-family: Manrope;
+    src: url(Manrope/Manrope-VariableFont_wght.ttf);
+  }

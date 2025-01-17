@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eligible Applications Line Graph</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <h2>Eligible Applications Over Time</h2>
+  <canvas id="eligibleApplicationsChart" width="400" height="200"></canvas>
+
+  <script>
+    function getApplications() {
+      if (localStorage.getItem('user')) {
+        const user = JSON.parse(localStorage.getItem('user'));
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', 'http://localhost:3003/api/adminGetAll', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify({ username: user.username }));
+
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            const response = JSON.parse(xhr.responseText);
+            console.log("Application Response Data is: ", response);
+            
+            // Process response data
+            const eligibleApplicationsData = processApplications(response);
+
+            // Create the line chart
+            createLineChart(eligibleApplicationsData);
+          }
+        };
+      }
+    }
+
+    // Function to process applications data
+    function processApplications(data) {
+      const eligibleApplications = {};
+      const firstDate = new Date(data[0].dateSubmitted); // Get the first submission date
+      const today = new Date();
+
+      // Initialize eligibleApplications with days since first submission
+      for (
+        let date = new Date(firstDate);
+        date <= today;
+        date.setDate(date.getDate() + 1)
+      ) {
+        const key = date.toISOString().split('T')[0]; // Format as YYYY-MM-DD
+        eligibleApplications[key] = 0;
+      }
+
+      // Filter eligible applications and populate eligibleApplications object
+      data.forEach((app) => {
+        const submissionDate = new Date(app.dateSubmitted).toISOString().split('T')[0];
+        if (app.loanStatus !== "Submitted" && app.loanStatus !== "Rejected") {
+          eligibleApplications[submissionDate]++;
+        }
+      });
+
+      // Format data for chart
+      const labels = Object.keys(eligibleApplications);
+      const values = Object.values(eligibleApplications);
+
+      return { labels, values };
+    }
+
+    // Function to create a line chart using Chart.js
+    function createLineChart(data) {
+      const ctx = document.getElementById('eligibleApplicationsChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: data.labels, // Days since first submission
+          datasets: [
+            {
+              label: 'Eligible Applications',
+              data: data.values,
+              borderColor: 'rgba(75, 192, 192, 1)',
+              backgroundColor: 'rgba(75, 192, 192, 0.2)',
+              borderWidth: 2,
+              tension: 0.4, // Smooth line
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              display: true,
+              position: 'top',
+            },
+          },
+          scales: {
+            x: {
+              title: {
+                display: true,
+                text: 'Days Since First Submission',
+              },
+            },
+            y: {
+              title: {
+                display: true,
+                text: 'Eligible Applications',
+              },
+              beginAtZero: true,
+            },
+          },
+        },
+      });
+    }
+
+    // Call the function to fetch applications and render the chart
+    getApplications();
+  </script>
+</body>
+</html>

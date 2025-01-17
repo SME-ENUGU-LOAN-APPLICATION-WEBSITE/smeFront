@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SME app</title>
+    <link rel="stylesheet" href="all.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <!-- logo with title:"SMELOANS", title:SME Growth Business Loan and cta button saying "Apply now" --> 
+        <div class="logobox">
+            <img src="smedanLogo.png" alt="SMELOANS" width="50px" height="50px">
+            <h1>ENUGUSMELOANS</h1>
+        </div>
+            <h1>SME Growth Business Loan</h1>
+            <button type="button" class="checklogin" onclick="checkLogin()">Apply now</button>
+    </header>
+
+    <main>
+        <h1>SME Growth Accelerator Programme</h1>
+        <h2>Product Overview</h2>
+        <p>
+            Are you ready to take your business to the next level? Not many financial institutions truly understand the unique challenges faced by Nigerian SMEs. 
+            We are not just another lender – we are your growth partner! Our SME Growth Accelerator Loan Program is specifically designed for ambitious business 
+            owners who are ready to scale their operations and create lasting impact in their communities. 
+            We are offering the SME Growth Accelerator Loan to support established small and medium enterprises ready for expansion. 
+            This loan product is essential for businesses seeking working capital, equipment financing, or expansion funding with flexible terms and competitive rates.
+        </p>
+
+        <h2>Loan Features</h2>
+        <ul>
+            <li>Loan Amount: N500,000 – N5,000,000</li>
+            <li>Loan Term: 6 – 12 months</li>
+            <li>Interest Rate: 5% per month</li>
+            <li>Processing Fee: 2% of loan amount</li>
+            <li>Collateral: Not required</li>
+        </ul>
+
+        <section class="detailsHold">
+            <section class="detailsForm">
+                <div class="headingsHold">
+                    <div class="heads 1">Personal Information</div>
+                    <div class="heads 2">Business Information</div>
+                    <div class="heads 3">Financial and Operational Information</div>
+                    <div class="heads 4">Challenges and Needs</div>
+                    <div class="heads 5">Loan History</div>
+                    <div class="heads 6">Regulatory Challenges</div>
+                </div>
+                <div class="progressLine"></div>
+                <div class="questionsHold">
+                    <label for="fullname">Full Name</label>
+                    <input type="text" placeholder="Enter your full name " name="fullname" class="fullnameInput" required>
+
+                    <label for="dob">Date of Birth</label>
+                    <input type="date" class="dobInput" name="dob" title="Date of Birth" required>
+
+                    <label for="gender">Gender</label>
+                    <select name="gender" id="genderSelect" title="select your gender">
+                        <option value="male">Male</option>
+                        <option value="female">Femaile</option>
+                        <option value="Other">Other</option>
+                    </select>
+
+                    <label for="email">Email Address</label>
+                    <input type="email" class="emailInput" placeholder="Enter your email address" name="email" required>
+
+                    <label for="phone number">Phone Number</label>
+                    <input type="tel" class="phoneNumberInput" placeholder="Enter your phone number" name="phone" required>
+
+                    <label for="residentAddress">Residential Address</label>
+                    <input type="text" class="residentAddressInput" placeholder="Enter your residential address" name="residentAddress" required>
+
+                    <label for="LGA">Local Government Area</label>
+                    <input type="text" class="LGAInput" placeholder="Enter your Local Government Area" name="LGA" required>
+
+                    <label for="state">State</label>
+                    <input type="text" class="stateInput" placeholder="Enter your State of Origin" name="state" required> 
+                    
+                    <div class="buttonHold">
+                        <button type="button" onclick="hideQuestionnaire()">Back</button>
+                        <button type="button" onclick="businessShow()">Next</button>
+                    </div>
+
+                    <!-- <label for="businessName">Business Name</label>
+                    <input type="text" class="businessNameInput" placeholder="Enter your business name" name="businessName" required>
+
+                    <label for="businessAddress">Business Address</label>
+                    <input type="text" class="businessAddressInput" placeholder="Enter your business address" name="businessAddress" required>
+
+                    <label for="businessAge">Business Age</label>
+                    <select name="businessAge" id="businessAgeSelect" title="select your business age">
+                        <option value="0-1">Less than 1 year</option>
+                        <option value="1-3">1-3 years</option>
+                        <option value="4-7">4-7 years</option>
+                        <option value="7+">Over 7 years</option>
+                    </select>
+
+                    <label for="businessType">Business Type</label>
+                    <select name="businessType" id="businessTypeSelect" title="select your business type">
+                        <option value="Nanoenterprise">Nanoenterprise(0-4 employees)</option>
+                        <option value="Microenterprise">Microenterprise (5-9 employees)</option>
+                        <option value="Smallenterprise">Small Enterprise (10-49 employees)</option>
+                        <option value="Mediumenterprise">Medium Enterprise (50-249 employees)</option>
+                    </select>
+
+                    <label for="businessIndustry">Business industry</label>
+                    <select name="businessIndustry" id="businessIndustrySelect" title="select your business industry">
+                        <option value="Retail">Retail</option>
+                        <option value="Services">Services (e.g hardressing, tailoring e.t.c)</option>
+                        <option value="Agriculture">Agriculture</option>
+                        <option value="Manufacturing">Manufacturing</option>
+                        <option value="Technology">Technology</option>
+                        <option value="Other">Other</option>
+                    </select>
+
+                    <label for="businessLGA"> LGA of Business</label>
+                    <select name="businessLGA" id="businessLGASel" title="select your business LGA">
+                        <option value="Enugu East">Enugu East</option>
+                        <option value="Enugu North">Enugu North</option>
+                        <option value="Enugu South">Enugu South</option>
+                        <option value="Nkanu East">Nkanu East</option>
+                        <option value="Nkanu West">Nkanu West</option>
+                        <option value="Udi">Udi</option>
+                        <option value="Oji River">Oji River</option>
+                        <option value="Igbo Etiti">Igbo Etiti</option>
+                        <option value="Igbo Eze North">Igbo Eze North</option>
+                        <option value="Igbo Eze South">Igbo Eze South</option>
+                        <option value="Isi Uzo">Isi Uzo</option>
+                        <option value="Uzo Uwani">Uzo Uwani</option>
+                    </select>
+
+                    <label for="businessTown">Town of Business</label>
+                    <input type="text" class="businessTownInput" placeholder="Enter your business town" name="businessTown" required>
+
+                    <div class="buttonHold">
+                        <button type="button" onclick="businessShowBack()">Back</button>
+                        <button type="button" onclick="financenOpShow()">Next</button>
+                    </div> -->
+                
+                <!-- <label for="bankAccountQuestion">Do you have a bank account for your business?</label>
+                <select name="bankAccountQuestion" id="bankAccountQuestionSelect" title="select if you have a bank account for your business">
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+
+                <label for="digitalPaymentQuestion">Do you use any digital payment systems? </label>
+                <select name="digitalPaymentQuestion" id="digitalPaymentQuestionSelect" title="select if you use any digital payment systems">
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+
+                <label for="businessFinanceQuestion">How do you manage your business finances? </label>
+                <select name="businessFinanceQuestion" id="businessFinanceQuestionSelect" title="select how you manage your business finances">
+                    <option value="Formal Accounting">Formal Accounting System</option>
+                    <option value="Basic Bookeeping">Basic Bookeeping</option>
+                    <option value="No Formal System">No Formal System</option>
+                    <option value="Outsourced Accountant">Outsourced Accountant</option>
+                </select>
+
+                <div class="buttonHold">
+                    <button type="button" onclick="businessShowBack()">Back</button>
+                    <button type="button" onclick="challengenNeedShow()">Next</button>
+                </div> -->
+
+                <!-- <label for="biggestChallengesQuestion">What are the biggest challenges your business faces?</label>
+                <select name="biggestChallengesQuestion" id="biggestChallengesQuestionSelect" title="select the biggest challenges your business faces">
+                    <option value="Access to Finance">Access to Finance</option>
+                    <option value="High costs of Operations">High cost of Operations</option>
+                    <option value="Getting customers">Getting customers</option>
+                    <option value="Competition">Competition</option>
+                    <option value="Regulatory Compliance">Regulatory Compliance</option>
+                    <option value="Other">Other</option>
+                </select>
+                
+
+                <label for="govtSupportQuestion">What kind of support would you like from the government? </label>
+                <select name="govtSupportQuestion" id="govtSupportQuestionSelect" title="select the kind of support you would like from the government">
+                    <option value="Easier Access to Loans">Easier Access To Loans</option>
+                    <option value="Lower taxes or fees">Lower taxes or fees</option>
+                    <option value="Better infrastructure">Better infrastructure</option>
+                    <option value="More Business advice and training">More Business advice and training</option>
+                </select>
+
+                <label for="businessGrowthQuestion">What would help your business grow the most?</label>
+                <select name="businessGrowthQuestion" id="businessGrowthQuestionSelect" title="select what would help your business grow the most">
+                    <option value="More access to money">Access to Finance</option>
+                    <option value="Better Equipment">Better Equipment</option>
+                    <option value="Lower business costs">Lower business costs</option>
+                    <option value="Better infrastructure">Better infrastructure</option>
+                    <option value="More skilled workers">More skilled workers</option>
+                </select>
+
+                <div class="buttonHold">
+                    <button type="button" onclick="financenOpShowBack()">Back</button>
+                    <button type="button" onclick="loanHistoryShow()">Next</button>
+                </div> -->
+
+                <!-- <label for="loanBeforeQuestion">Have you ever tried to get a loan for your business? </label>
+                <select name="loanBeforeQuestion" id="loanBeforeQuestionSelect" title="select if you have ever tried to get a loan for your business">
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+
+                <label for="loanHowQuestion">If yes, how did you get the loan?</label>
+                <select name="loanHowQuestion" id="loanHowQuestionSelect" title="select how you got the loan">
+                    <option value="Bank or Financial Institution">Bank</option>
+                    <option value="Family or Friends">Family or Friends</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <label for="whyNoLoan">If you did not get a loan, what was the main reason? </label>
+                <select name="whyNoLoan" id="whyNoLoanSelect" title="select the main reason you did not get a loan">
+                    <option value="Didn't Know How to Apply">Bad Credit</option>
+                    <option value="Interest Rates Too High">High Interest Rates</option>
+                    <option value="No Collateral">No Collateral</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <div class="buttonHold">
+                    <button type="button" onclick="businessShowBack()">Back</button>
+                        <button type="button" onclick="regulatoryChallengeShow()">Next</button>
+                </div> -->
+                
+            
+            </div>
+            </section>
+        </section>
+    </main>
+
+    <footer>
+        <div class="column">
+            <h3>SMEDAN</h3>
+            <p>Get instant loan approvals with AI-powered approval in minutes.</p>
+        </div>
+        <div class="column">
+            <h3>Explore</h3>
+            <ul>
+                <li><a href="#">Download Android app</a></li>
+                <li><a href="#">Business Solution</a></li>
+                <li><a href="#">PagerCare</a></li>
+                <li><a href="#">About Product</a></li>
+            </ul>
+        </div>
+        <div class="column">
+            <h3>Know More</h3>
+            <ul>
+                <li><a href="#">Health Portal</a></li>
+                <li><a href="#">Stories from Field</a></li>
+                <li><a href="#">Profit Hub</a></li>
+                <li><a href="#">Release Pages</a></li>
+            </ul>
+        </div>
+        <div class="column">
+            <h3>About</h3>
+            <ul>
+                <li><a href="#">Distributed World-Wide</a></li>
+                <li><a href="#">Who we help</a></li>
+                <li><a href="#">Community rights</a></li>
+                <li><a href="#">Marketing</a></li>
+            </ul>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>

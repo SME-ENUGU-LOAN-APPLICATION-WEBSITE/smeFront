@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="../all.css">
+    <link rel="stylesheet" href="admin.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logoHold">
+            <img src="../smedanLogo.png" alt="SMELOANS" width="50px" height="50px">
+            <h1>ENUGUSMELOANS</h1>
+        </div>
+
+        <nav>
+            <button type="button" id="AllApplic">All</button>
+            <button type="button" id="SubmittedApplic">Submitted</button>
+            <button type="button" id="UnderReviewApplic">Under Review</button>
+            <button type="button" id="ApprovedApplic">Approved</button>
+            <button type="button" id="RejectedApplic">Rejected</button>
+            <button type="button" id="Reports" onclick="showGraphs()">Reports</button>
+        </nav>
+
+        <div class="user">
+            <img src="user.png" alt="User" width="50px" height="50px">
+            <button type="button" onclick="logout(),adminLogout()">Logout</button>
+        </div>
+    </header>
+
+    <section class="dashboard">
+        <div class="dashboardHeading">
+            <h1>Admin Dashboard</h1>
+        </div>
+
+        <div class="dashboardHeaders">
+            <div class="submittedHeader">
+                <h2>Approved</h2>
+                <!-- <p>6</p> -->
+            </div>
+
+            <div class="underReviewHeader">
+                <h2>Rejected</h2>
+                <p>24</p>
+            </div>
+
+            <div class="approvedHeader">
+                <h2>Pending</h2>
+                <p>21</p>
+            </div>
+
+            <div class="graph g1">
+                <!-- <h2>Pending</h2>
+                <p>21</p> -->
+                <canvas id="eligibleApplicationsChart"></canvas>
+            </div>
+            <div class="graph g2">
+                <!-- <h2>Pending</h2>
+                <p>21</p> -->
+                <canvas id="totalApplicationsChart"></canvas>
+            </div>
+            <div class="graph g3">
+                <!-- <h2>Pending</h2>
+                <p>21</p> -->
+                <canvas id="approvedVsRejectedChart"></canvas>
+            </div>
+        </div>
+
+        <h1 class="applicationsHeading">All Applications</h1>
+        <section class="applicationsHold">
+            <!-- <div class="application">
+                <p>#1</p>
+                <p>Nexford University</p>
+                <p>pending</p>
+                <p>Jan 13,2025</p>
+                <p>accepted</p>
+            </div> -->
+
+        </section>
+    </section>
+    
+    <section class="content">
+        <h1 class="contentHeading">
+            Application Number
+        </h1>
+
+        <div class="statusBox">
+            <p>Status</p>
+             <h2>Pending</h2><!--<h2>Submitted<span> - pending</span></h2> we have under review - pending, - accepted and plain old rejected-->
+        </div>
+
+        <h3 class="activityHeading" id="firstActivity">Activity</h3>
+
+        <section class="activityHold">
+            <!-- <div class="activity">
+                <p>Submitted</p>
+                <img src="../approvedGreen.svg" alt="good" width="30px" height="30px">
+            </div> -->
+
+        </section>
+
+        <div class="buttonHold">
+            <!-- <button type="button" id="cta" onclick="uploadDocument()">Upload Document</button> -->
+        </div>
+    </section>
+
+    <script src="admin.js"></script>
+    <script src="adminGraph.js"></script>
+</body>
+</html>

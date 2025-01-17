@@ -1,0 +1,185 @@
+//to but back in content later
+        <div class="statusBox">
+            <p>Status</p>
+            <h2>Submitted<span> - pending</span></h2><!-- we have under review - pending, - accepted and plain old rejected-->
+        </div>
+
+        <h3 class="activityHeading">Activity</h3>
+
+        <section class="activityHold">
+            <div class="activity">
+                <p>Submitted</p>
+                <img src="../approvedGreen.svg" alt="good" width="30px" height="30px">
+            </div>
+
+        </section>
+
+        <div class="buttonHold">
+            <!-- <button type="button" id="cta" onclick="uploadDocument()">Upload Document</button> -->
+        </div>
+
+//basic template for xhttp requests (wow, they are better than fetch to me)
+
+            // get all applications related to username(email) and put in applicationsHold
+            if(localStorage.getItem('user')){
+                var user = JSON.parse(localStorage.getItem('user'));
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'http://localhost:3003/api/getAllApplic', true);
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.send(JSON.stringify({
+                    username: user.username
+                }));
+                xhr.onreadystatechange = function(){
+                    if(xhr.readyState == 4 && xhr.status == 200){
+                        var response = JSON.parse(xhr.responseText);
+                        // code from here
+
+                        
+                    }
+                }
+            }
+
+
+
+//admin details questions and answers template for first database(loanQuestionnaire). remain second part
+ // get all details for this application
+            if(localStorage.getItem('user')){
+                var user = JSON.parse(localStorage.getItem('user'));
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'http://localhost:3003/api/adminGetOne', true);
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.send(JSON.stringify({
+                    id: applicID
+                }));
+                xhr.onreadystatechange = function(){
+                    if(xhr.readyState == 4 && xhr.status == 200){
+                        var response = JSON.parse(xhr.responseText);
+                        // code from here
+                        document.querySelector(".buttonHold").innerHTML = ` `;
+                        console.log("responzio",response)
+                        let activityHold = document.querySelector("section.activityHold")
+                        activityHold.innerHTML = `
+                            <div class="activity">
+                                <p>Fullname</p>
+                                <p>${response[0].personalInfo.fullname}</p>
+                            </div>
+                            <div class="activity">
+                                <p>Date of Birth</p>
+                                <p>${response[0].personalInfo.dateofbirth}</p>
+                            </div>
+                            <div class="activity">
+                                <p>Gender</p>
+                                <p>${response[0].personalInfo.gender}</p>
+                            </div>
+                            <div class="activity">
+                                <p>Email</p>
+                                <p>${response[0].personalInfo.email}</p>
+                            </div>
+                            <div class="activity">
+                                <p>Phone Number</p>
+                                <p>${response[0].personalInfo.phone}</p>
+                            </div>
+                            <div class="activity">
+                                <p>Resident Address</p>
+                                <p>${response[0].personalInfo.residentAddress}</p>
+                            </div>
+                            <div class="activity">
+                                <p>Local Govt Area</p>
+                                <p>${response[0].personalInfo.LGA}</p>
+                            </div>
+                            <div class="activity">
+                                <p>State of Origin</p>
+                                <p>${response[0].personalInfo.state}</p>
+                            </div>
+                            <div class="activity">
+                                <p>Loan Before Question</p>
+                                <p>${response[0].dateSubmitted}</p>
+                            </div>
+
+                            <h3 class="activityHeading">Business Information</h3>
+
+                            <div class="activity">
+                                <p>Business Name</p>
+                                <p>${response[0].businessInfo.businessName}</p>
+                            </div>
+                            <div class="activity">
+                                <p>Business Address</p>
+                                <p>${response[0].businessInfo.businessAddress}</p>
+                            </div>
+                            <div class="activity">
+                                <p>Business Age</p>
+                                <p>${response[0].businessInfo.businessAge}</p>
+                            </div>
+                            <div class="activity">
+                                <p>Business Type</p>
+                                <p>${response[0].businessInfo.businessType}</p>
+                            </div>
+                            <div class="activity">
+                                <p>Business Industry</p>
+                                <p>${response[0].businessInfo.businessIndustry}</p>
+                            </div>
+                            <div class="activity">
+                                <p>Business LGA</p>
+                                <p>${response[0].businessInfo.businessLGA}</p>
+                            </div>
+                            <div class="activity">
+                                <p>Business Town</p>
+                                <p>${response[0].businessInfo.businessTown}</p>
+                            </div>
+
+                            <h3 class="activityHeading">Financial Information</h3>
+
+                            <div class="activity">
+                                <p>Bank Account Question</p>
+                                <p>${response[0].financeInfo.bankAccountQuestion}</p>
+                            </div>
+                            <div class="activity">
+                                <p>Bank Account Question</p>
+                                <p>${response[0].financeInfo.digitalPaymentQuestion}</p>
+                            </div>
+                            <div class="activity">
+                                <p>Bank Account Question</p>
+                                <p>${response[0].financeInfo.businessFinanceQuestion}</p>
+                            </div>
+
+                            <h3 class="activityHeading">Challenges Information</h3>
+
+                            <div class="activity">
+                                <p>Biggest Challenges Question</p>
+                                <p>${response[0].challengeInfo.biggestChallengesQuestion}</p>
+                            </div>
+                            <div class="activity">
+                                <p>Government Support Question</p>
+                                <p>${response[0].challengeInfo.govtSupportQuestion}</p>
+                            </div>
+                            <div class="activity">
+                                <p>Biggest Challenges Question</p>
+                                <p>${response[0].challengeInfo.businessGrowthQuestion}</p>
+                            </div>
+
+                            <h3 class="activityHeading">Loan Information</h3>
+
+                            <div class="activity">
+                                <p>Loan Before Question</p>
+                                <p>${response[0].loanInfo.loanBeforeQuestion}</p>
+                            </div>
+                            <div class="activity">
+                                <p>Loan How Question</p>
+                                <p>${response[0].loanInfo.loanHowQuestion}</p>
+                            </div>
+                            <div class="activity">
+                                <p>Why No Loan Question</p>
+                                <p>${response[0].loanInfo.whyNoLoan}</p>
+                            </div>
+
+                            <h3 class="activityHeading">Regulatory Information</h3>
+
+                            <div class="activity">
+                                <p>Regulatory Challenge Question</p>
+                                <p>${response[0].regulatoryInfo.regulatoryChallengeQuestion}</p>
+                            </div>
+                        `;
+
+                    }
+                }
+            }

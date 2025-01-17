@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SME app</title>
+    <link rel="stylesheet" href="../all.css">
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="signUp.css">
+</head>
+<body>
+
+
+    <main>
+        <img src="../smedanLogo.png" alt="SMELOANS" width="50px" height="50px">
+        <h1>Create Your Account</h1>
+        <p>Get instant loan approvals in minutes</p>
+        <!-- email input with label, password input with label, a login button and text that links to sign up if you dont have an account. NO FORMS -->
+         <!-- name input with label -->
+        <label for="name">Name</label>
+        <input type="text" placeholder="Name" id="name" name="name" required>
+         <!-- label for the email input -->
+        <label for="email">Email</label>
+        <input type="email" placeholder="Email" id="email" name="email" required>
+        <!-- label for the password input -->
+        <label for="password">Password</label>
+        <input type="password" placeholder="Password" id="password" name="password" required>
+        <!-- a required checkbox for the user to agree to all Terms(linked), Privacy Policy(linked) and Fees(linked) -->
+         <div class="terms">
+            <input type="checkbox" title="terms" name="terms" required>
+            <label for="terms" >I agree to all <a href="#">Terms</a>, <a href="#">Privacy Policy</a> and <a href="#">Fees</a></label>
+        </div>
+        <button type="button" onclick="makeLogin()">Sign Up</button>
+        <p>Already have an account? <a href="login.html">Login</a></p>
+
+    </main>
+
+<script src="signUp.js"></script>
+</body>
+</html>

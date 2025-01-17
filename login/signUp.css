@@ -1,0 +1,17 @@
+main{
+    padding: 20px 5vw;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    height: auto;
+    width: 500px;
+    background-color: white;
+}
+.terms{
+    display: flex;
+}
+.terms input{
+    margin-right: 10px;
+    width: 25px;
+}
