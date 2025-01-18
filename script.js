@@ -685,5 +685,5 @@ function submitForm(){
 }
 
 function homepageMove(){
-    window.location.href = '/homepageUser/homepageU.html';
+    window.location.href = 'homepageU.html';
 }

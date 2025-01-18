@@ -2,7 +2,7 @@ checkLogin();
 function checkLogin(){
     // if there is no user logged in, redirect to login page
     if(!localStorage.getItem('user')){
-        window.location.href = '../login/login.html';
+        window.location.href = 'login/login.html';
         // console.log('No user logged in');
     }
     // if there is a user logged in, send a request to the server to check if the user is still valid. it should expect a response that first tells if the user is valid and second shows if the user is an admin or just user. If not, redirect to login page
@@ -20,7 +20,7 @@ function checkLogin(){
                     // if the user is not valid, redirect to login page and remove the user from the local storage
                     localStorage.removeItem('user');
                     // console.log('User is not valid');
-                    window.location.href = '../login/login.html';
+                    window.location.href = 'login/login.html';
                 }
                 else{
                     if(response.admin == false){
@@ -139,11 +139,11 @@ function activityShow(applicID,bizName,loanAmount,timeSubmitted,loanStatus){
         document.querySelector("section.activityHold").innerHTML = `
         <div class="activity">
                 <p>Submitted</p>
-                <img src="../approvedGreen.svg" alt="good" width="30px" height="30px">
+                <img src="approvedGreen.svg" alt="good" width="30px" height="30px">
         </div>
         <div class="activity">
                 <p>Accepted</p>
-                <img src="../approvedGreen.svg" alt="good" width="30px" height="30px">
+                <img src="approvedGreen.svg" alt="good" width="30px" height="30px">
         </div>`
 
         document.querySelector(".buttonHold").innerHTML = `
@@ -163,7 +163,7 @@ function activityShow(applicID,bizName,loanAmount,timeSubmitted,loanStatus){
         document.querySelector("section.activityHold").innerHTML = `
         <div class="activity">
                 <p>Submitted</p>
-                <img src="../approvedGreen.svg" alt="good" width="30px" height="30px">
+                <img src="approvedGreen.svg" alt="good" width="30px" height="30px">
         </div>
         <div class="activity">
                 <p>Rejected</p>
@@ -178,15 +178,15 @@ function activityShow(applicID,bizName,loanAmount,timeSubmitted,loanStatus){
             document.querySelector("section.activityHold").innerHTML = `
             <div class="activity">
                     <p>Submitted</p>
-                    <img src="../approvedGreen.svg" alt="good" width="30px" height="30px">
+                    <img src="approvedGreen.svg" alt="good" width="30px" height="30px">
             </div>
             <div class="activity">
                     <p>Accepted</p>
-                    <img src="../approvedGreen.svg" alt="good" width="30px" height="30px">
+                    <img src="approvedGreen.svg" alt="good" width="30px" height="30px">
             </div>
             <div class="activity">
                     <p>Documents Uploaded</p>
-                    <img src="../approvedGreen.svg" alt="good" width="30px" height="30px">
+                    <img src="approvedGreen.svg" alt="good" width="30px" height="30px">
             </div>`
     }else
     if(loanStatus == "Approved"){
@@ -198,19 +198,19 @@ function activityShow(applicID,bizName,loanAmount,timeSubmitted,loanStatus){
             document.querySelector("section.activityHold").innerHTML = `
             <div class="activity">
                     <p>Submitted</p>
-                    <img src="../approvedGreen.svg" alt="good" width="30px" height="30px">
+                    <img src="approvedGreen.svg" alt="good" width="30px" height="30px">
             </div>
             <div class="activity">
                     <p>Accepted</p>
-                    <img src="../approvedGreen.svg" alt="good" width="30px" height="30px">
+                    <img src="approvedGreen.svg" alt="good" width="30px" height="30px">
             </div>
             <div class="activity">
                     <p>Documents Uploaded</p>
-                    <img src="../approvedGreen.svg" alt="good" width="30px" height="30px">
+                    <img src="approvedGreen.svg" alt="good" width="30px" height="30px">
             </div>
             <div class="activity">
                     <p>Approved</p>
-                    <img src="../approvedGreen.svg" alt="good" width="30px" height="30px">
+                    <img src="approvedGreen.svg" alt="good" width="30px" height="30px">
             </div>`
     }
 }
@@ -405,11 +405,11 @@ function updatePending(applicID){
 function logout(){
     // remove the user from the local storage and redirect to login page
     localStorage.removeItem('user');
-    window.location.href = '../login/login.html';
+    window.location.href = 'login/login.html';
 }
 
 function adminLogout(){
     // remove the user from the local storage and redirect to login page
     localStorage.removeItem('userLoginDetails');
-    window.location.href = '../login/login.html';
+    window.location.href = 'login/login.html';
 }

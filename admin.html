@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Dashboard</title>
-    <link rel="stylesheet" href="../all.css">
-    <link rel="stylesheet" href="homepageU.css">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="all.css">
+    <link rel="stylesheet" href="admin.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <header>
         <div class="logoHold">
-            <img src="../smedanLogo.png" alt="SMELOANS" width="50px" height="50px">
+            <img src="smedanLogo.png" alt="SMELOANS" width="50px" height="50px">
             <h1>ENUGUSMELOANS</h1>
         </div>
 
@@ -20,32 +21,50 @@
             <button type="button" id="UnderReviewApplic">Under Review</button>
             <button type="button" id="ApprovedApplic">Approved</button>
             <button type="button" id="RejectedApplic">Rejected</button>
+            <button type="button" id="Reports" onclick="showGraphs()">Reports</button>
         </nav>
 
         <div class="user">
             <img src="user.png" alt="User" width="50px" height="50px">
+            <button type="button" onclick="logout(),adminLogout()">Logout</button>
         </div>
     </header>
 
     <section class="dashboard">
         <div class="dashboardHeading">
-            <h1>User Dashboard</h1>
+            <h1>Admin Dashboard</h1>
         </div>
 
         <div class="dashboardHeaders">
             <div class="submittedHeader">
-                <h2>Submitted</h2>
-                <p>24</p>
+                <h2>Approved</h2>
+                <!-- <p>6</p> -->
             </div>
 
             <div class="underReviewHeader">
-                <h2>Under Review</h2>
-                <p>12</p>
+                <h2>Rejected</h2>
+                <p>24</p>
             </div>
 
             <div class="approvedHeader">
-                <h2>Approved</h2>
-                <p>6</p>
+                <h2>Pending</h2>
+                <p>21</p>
+            </div>
+
+            <div class="graph g1">
+                <!-- <h2>Pending</h2>
+                <p>21</p> -->
+                <canvas id="eligibleApplicationsChart"></canvas>
+            </div>
+            <div class="graph g2">
+                <!-- <h2>Pending</h2>
+                <p>21</p> -->
+                <canvas id="totalApplicationsChart"></canvas>
+            </div>
+            <div class="graph g3">
+                <!-- <h2>Pending</h2>
+                <p>21</p> -->
+                <canvas id="approvedVsRejectedChart"></canvas>
             </div>
         </div>
 
@@ -72,7 +91,7 @@
              <h2>Pending</h2><!--<h2>Submitted<span> - pending</span></h2> we have under review - pending, - accepted and plain old rejected-->
         </div>
 
-        <h3 class="activityHeading">Activity</h3>
+        <h3 class="activityHeading" id="firstActivity">Activity</h3>
 
         <section class="activityHold">
             <!-- <div class="activity">
@@ -87,6 +106,7 @@
         </div>
     </section>
 
-    <script src="homepageU.js"></script>
+    <script src="admin.js"></script>
+    <script src="adminGraph.js"></script>
 </body>
 </html>

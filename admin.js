@@ -2,7 +2,7 @@ checkLogin();
 function checkLogin(){
     // if there is no user logged in, redirect to login page
     if(!localStorage.getItem('user')){
-        window.location.href = 'login/login.html';
+        window.location.href = 'login.html';
         // console.log('No user logged in');
     }
     // if there is a user logged in, send a request to the server to check if the user is still valid. it should expect a response that first tells if the user is valid and second shows if the user is an admin or just user. If not, redirect to login page
@@ -20,7 +20,7 @@ function checkLogin(){
                     // if the user is not valid, redirect to login page and remove the user from the local storage
                     localStorage.removeItem('user');
                     // console.log('User is not valid');
-                    window.location.href = 'login/login.html';
+                    window.location.href = 'login.html';
                 }
                 else{
                     if(response.admin == false){
@@ -75,7 +75,7 @@ function adminResponse(){
                         if(response.admin == false){
                             // document.querySelector('.checklogin').className = 'loggedIn';
                             console.log("admin response, you are not an admin and logged in as " + user.username);
-                            window.location.href = '../homepageUser/homepageU.html';
+                            window.location.href = 'homepageU.html';
                         }
                         else{
                             // window.location.href = 'admin.html';
