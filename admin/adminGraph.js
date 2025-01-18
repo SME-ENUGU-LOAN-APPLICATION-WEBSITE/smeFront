@@ -1,4 +1,4 @@
-let graphShow = 0;
+let graphShow = 1;
 function showGraphs(){
     if(graphShow == 0){
         document.querySelector('.g1').style.display = "none";
