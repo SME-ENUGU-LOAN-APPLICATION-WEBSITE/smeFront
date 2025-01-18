@@ -205,18 +205,23 @@ function businessShow(){
 
                     <label for="businessLGA"> LGA of Business</label>
                     <select name="businessLGA" id="businessLGASel" title="select your business LGA">
+                        <option value="Aninri">Aninri</option>
+                        <option value="Awgu">Agwu</option>
                         <option value="Enugu East">Enugu East</option>
                         <option value="Enugu North">Enugu North</option>
                         <option value="Enugu South">Enugu South</option>
-                        <option value="Nkanu East">Nkanu East</option>
-                        <option value="Nkanu West">Nkanu West</option>
-                        <option value="Udi">Udi</option>
-                        <option value="Oji River">Oji River</option>
+                        <option value="Ezeagu">Ezeagu</option>
                         <option value="Igbo Etiti">Igbo Etiti</option>
                         <option value="Igbo Eze North">Igbo Eze North</option>
+                        <option value="Nkanu East">Nkanu East</option>
                         <option value="Igbo Eze South">Igbo Eze South</option>
                         <option value="Isi Uzo">Isi Uzo</option>
+                        <option value="Nkanu West">Nkanu West</option>
                         <option value="Uzo Uwani">Uzo Uwani</option>
+                        <option value="Nsukka">Nsukka</option>
+                        <option value="Oji River">Oji River</option>
+                        <option value="Udenu">Udenu</option>
+                        <option value="Udi">Udi</option>
                     </select>
 
                     <label for="businessTown">Town of Business</label>
