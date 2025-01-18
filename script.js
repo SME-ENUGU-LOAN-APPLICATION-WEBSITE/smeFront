@@ -73,6 +73,9 @@ function checkLogin(){
 
 
 }
+function goHomepage(){
+    window.location.href = 'homepageU.html';
+}
 
 function adminResponse(){
     // var user = JSON.parse(localStorage.getItem('userLoginDetails'));
