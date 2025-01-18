@@ -1042,11 +1042,11 @@ function rejectApplic(applicID){
 function logout(){
     // remove the user from the local storage and redirect to login page
     localStorage.removeItem('user');
-    window.location.href = '../login/login.html';
+    window.location.href = 'login.html';
 }
 
 function adminLogout(){
     // remove the user from the local storage and redirect to login page
     localStorage.removeItem('userLoginDetails');
-    window.location.href = '../login/login.html';
+    window.location.href = 'login.html';
 }

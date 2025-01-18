@@ -20,7 +20,7 @@ function showQuestionnaire(){
 function checkLogin(){
     // if there is no user logged in, redirect to login page
     if(!localStorage.getItem('user')){
-        window.location.href = 'login/login.html';
+        window.location.href = 'login.html';
         // console.log('No user logged in');
     }
     // if there is a user logged in, send a request to the server to check if the user is still valid. it should expect a response that first tells if the user is valid and second shows if the user is an admin or just user. If not, redirect to login page
@@ -38,7 +38,7 @@ function checkLogin(){
                     // if the user is not valid, redirect to login page and remove the user from the local storage
                     localStorage.removeItem('user');
                     // console.log('User is not valid');
-                    window.location.href = 'login/login.html';
+                    window.location.href = 'login.html';
                 }
                 else{
                     if(response.admin == false){
@@ -94,7 +94,7 @@ function adminResponse(){
                             document.querySelector('.checklogin').className = 'loggedIn';
                         }
                         else{
-                            window.location.href = './admin/admin.html';
+                            window.location.href = 'admin.html';
                         }
                     }
                 }
@@ -108,13 +108,13 @@ function adminResponse(){
 function logout(){
     // remove the user from the local storage and redirect to login page
     localStorage.removeItem('user');
-    window.location.href = 'login/login.html';
+    window.location.href = 'login.html';
 }
 
 function adminLogout(){
     // remove the user from the local storage and redirect to login page
     localStorage.removeItem('userLoginDetails');
-    window.location.href = 'login/login.html';
+    window.location.href = 'login.html';
 }
 
 function businessShow(){
