@@ -42,6 +42,18 @@ header nav button{
 header nav button:hover{
     color: green;
 }
+.user{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.user button{
+    padding: 5px;
+    border-radius: 10px 5px;
+    background-color: red;
+    color: white;
+    border-width: 0px;
+}
 
 
 

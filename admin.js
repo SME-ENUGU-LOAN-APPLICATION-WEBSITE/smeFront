@@ -1070,11 +1070,13 @@ function resubmitApplic(applicID){
 function logout(){
     // remove the user from the local storage and redirect to login page
     localStorage.removeItem('user');
+    localStorage.removeItem('userLoginDetails');
     window.location.href = 'login.html';
 }
 
 function adminLogout(){
     // remove the user from the local storage and redirect to login page
     localStorage.removeItem('userLoginDetails');
+    localStorage.removeItem('user');
     window.location.href = 'login.html';
 }
