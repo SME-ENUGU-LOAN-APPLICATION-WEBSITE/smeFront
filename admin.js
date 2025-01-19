@@ -594,6 +594,8 @@ function activityShow(applicID,bizName,loanAmount,timeSubmitted,loanStatus){
                         </div>
                     `;
 
+                    document.querySelector(".buttonHold").innerHTML = `
+                        <button type="button" id="resubmitBtn" class="deciseBtn" onclick="resubimtApplic(${applicID})">Resubmit</button>`;
                 }
             }
         }
@@ -763,8 +765,8 @@ function activityShow(applicID,bizName,loanAmount,timeSubmitted,loanStatus){
                         <button type="button" id="approveBtn" class="deciseBtn" onclick="approveApplic(${applicID})">Approve</button>
 
                         <button type="button" id="rejectBtn" class="deciseBtn"  onclick="rejectApplic(${applicID})">Reject</button>
-                        `
-                        // <button type="button" id="resubmitBtn" class="deciseBtn" onclick="resubimtApplic(${applicID})">Request Resubmission</button>
+                        
+                        <button type="button" id="resubmitBtn" class="deciseBtn" onclick="resubimtApplic(${applicID})">Resubmit</button>`;
                     }
                 }
             }
@@ -984,7 +986,10 @@ function activityShow(applicID,bizName,loanAmount,timeSubmitted,loanStatus){
                 }
             }
 
-            document.querySelector(".buttonHold").innerHTML = ` `;
+            document.querySelector(".buttonHold").innerHTML = `
+                        <button type="button" id="rejectBtn" class="deciseBtn"  onclick="rejectApplic(${applicID})">Reject</button>
+                        
+                        <button type="button" id="resubmitBtn" class="deciseBtn" onclick="resubimtApplic(${applicID})">Resubmit</button>`;
     }
 }
 
@@ -1025,6 +1030,29 @@ function rejectApplic(applicID){
        xhr.send(JSON.stringify({
            id: applicID,
            loanStatus: "Rejected"
+       }));
+       xhr.onreadystatechange = function(){
+           if(xhr.readyState == 4 && xhr.status == 200){
+               var response = JSON.parse(xhr.responseText);
+               // code from here
+               console.log(response)
+               location.reload();
+           }
+       }
+   }
+}
+
+
+function resubmitApplic(applicID){
+    // get all details for this application
+    if(localStorage.getItem('user')){
+       var user = JSON.parse(localStorage.getItem('user'));
+       var xhr = new XMLHttpRequest();
+       xhr.open('POST', 'https://smebackendmain.onrender.com/api/adminChangeOne', true);
+       xhr.setRequestHeader('Content-Type', 'application/json');
+       xhr.send(JSON.stringify({
+           id: applicID,
+           loanStatus: "Accepted"
        }));
        xhr.onreadystatechange = function(){
            if(xhr.readyState == 4 && xhr.status == 200){
