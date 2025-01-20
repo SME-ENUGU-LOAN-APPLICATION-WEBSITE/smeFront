@@ -654,7 +654,18 @@ function submitForm(){
         // console.log("loanInfo is",loanInfo);
         var regulatoryInfo = JSON.parse(localStorage.getItem('regulatoryInfo'));
         // console.log("regulatoryInfo is",regulatoryInfo);
+        
         var user = JSON.parse(localStorage.getItem('userLoginDetails'));
+        var test = {
+            personalInfo: personalInfo,
+            businessInfo: businessInfo,
+            financeInfo: financeInfo,
+            challengeInfo: challengeInfo,
+            loanInfo: loanInfo,
+            regulatoryInfo: regulatoryInfo,
+            username: user.username, 
+            usercookie: user.cookie}
+        console.log(test)
         var xhr = new XMLHttpRequest();
         xhr.open('POST', 'https://smebackendmain.onrender.com/api/businessShow', true);
         xhr.setRequestHeader('Content-Type', 'application/json');
