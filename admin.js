@@ -952,10 +952,10 @@ function activityShow(applicID,bizName,loanAmount,timeSubmitted,loanStatus){
                     if(xhr.readyState == 4 && xhr.status == 200){
                         var response = JSON.parse(xhr.responseText);
                         // code from here
-                        document.querySelector(".buttonHold").innerHTML = ` `;
+                        // document.querySelector(".buttonHold").innerHTML = ` `;
                         console.log("responzio",response)
                         let activityHold = document.querySelector("section.activityHold")
-                        activityHold.innerHTML = `
+                        activityHold.innerHTML += `
                             <div class="activity">
                                 <p>ID Card Link</p>
                                 <p>${response[0].idCardLink}</p>
