@@ -402,6 +402,7 @@ function loanHistoryShow(){
                 <select name="loanHowQuestion" id="loanHowQuestionSelect" title="select how you got the loan">
                     <option value="Bank or Financial Institution">Bank</option>
                     <option value="Family or Friends">Family or Friends</option>
+                    <option value="None">I did not apply</option>
                     <option value="Other">Other</option>
                 </select>
 
@@ -410,6 +411,7 @@ function loanHistoryShow(){
                     <option value="Didn't Know How to Apply">Bad Credit</option>
                     <option value="Interest Rates Too High">High Interest Rates</option>
                     <option value="No Collateral">No Collateral</option>
+                    <option value="None">I did not apply</option>
                     <option value="Other">Other</option>
                 </select>
 
