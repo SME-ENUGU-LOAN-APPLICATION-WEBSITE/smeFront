@@ -811,8 +811,11 @@ function activityShow(applicID,bizName,loanAmount,timeSubmitted,loanStatus){
                     if(xhr.readyState == 4 && xhr.status == 200){
                         var response = JSON.parse(xhr.responseText);
                         // code from here
-                        document.querySelector(".buttonHold").innerHTML = ` `;
-                        console.log("responzio",response)
+                        document.querySelector(".buttonHold").innerHTML = `
+                        <button type="button" id="rejectBtn" class="deciseBtn"  onclick="rejectApplic(${applicID})">Reject</button>
+                        
+                        <button type="button" id="resubmitBtn" class="deciseBtn" onclick="resubimtApplic(${applicID})">Resubmit</button>`;
+                        console.log("responzier",response)
                         let activityHold = document.querySelector("section.activityHold")
                         activityHold.innerHTML = `
                             <div class="activity">
@@ -935,61 +938,13 @@ function activityShow(applicID,bizName,loanAmount,timeSubmitted,loanStatus){
                                 <p>${response[0].regulatoryInfo.regulatoryChallengeQuestion}</p>
                             </div>
                         `;
-
+                        otherActivityApproved(applicID)
                     }
                 }
             }
-            // get all the remaining details from upload documents database
-            if(localStorage.getItem('user')){
-                var user = JSON.parse(localStorage.getItem('user'));
-                var xhr = new XMLHttpRequest();
-                xhr.open('POST', 'https://smebackendmain.onrender.com/api/adminGetUpOne', true);
-                xhr.setRequestHeader('Content-Type', 'application/json');
-                xhr.send(JSON.stringify({
-                    id: applicID
-                }));
-                xhr.onreadystatechange = function(){
-                    if(xhr.readyState == 4 && xhr.status == 200){
-                        var response = JSON.parse(xhr.responseText);
-                        // code from here
-                        // document.querySelector(".buttonHold").innerHTML = ` `;
-                        console.log("responzio",response)
-                        let activityHold = document.querySelector("section.activityHold")
-                        activityHold.innerHTML += `
-                            <div class="activity">
-                                <p>ID Card Link</p>
-                                <p>${response[0].idCardLink}</p>
-                            </div>
-                            <div class="activity">
-                                <p>Business Certificate Link</p>
-                                <p>${response[0].businessCertificateLink}</p>
-                            </div>
-                            <div class="activity">
-                                <p>Bank Statement Link</p>
-                                <p>${response[0].bankStatementLink}</p>
-                            </div>
-                            <div class="activity">
-                                <p>Loan Amount</p>
-                                <p>${response[0].LoanAmount}</p>
-                            </div>
-                            <div class="activity">
-                                <p>Interest Rate</p>
-                                <p>${response[0].interestRate}</p>
-                            </div>
-                            <div class="activity">
-                                <p>Payment per Interval</p>
-                                <p>${response[0].PaymentPer}</p>
-                            </div>
-                           `;
+           
 
-                    }
-                }
-            }
 
-            document.querySelector(".buttonHold").innerHTML = `
-                        <button type="button" id="rejectBtn" class="deciseBtn"  onclick="rejectApplic(${applicID})">Reject</button>
-                        
-                        <button type="button" id="resubmitBtn" class="deciseBtn" onclick="resubimtApplic(${applicID})">Resubmit</button>`;
     }
 }
 
@@ -1079,4 +1034,53 @@ function adminLogout(){
     localStorage.removeItem('userLoginDetails');
     localStorage.removeItem('user');
     window.location.href = 'login.html';
+}
+
+function otherActivityApproved(applicID){
+     // get all the remaining details from upload documents database
+     if(localStorage.getItem('user')){
+        var user = JSON.parse(localStorage.getItem('user'));
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'https://smebackendmain.onrender.com/api/adminGetUpOne', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify({
+            id: applicID
+        }));
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState == 4 && xhr.status == 200){
+                var response = JSON.parse(xhr.responseText);
+                // code from here
+                // document.querySelector(".buttonHold").innerHTML = ` `;
+                console.log("responzio",response)
+                let activityHold = document.querySelector("section.activityHold")
+                activityHold.innerHTML += `
+                    <div class="activity">
+                        <p>ID Card Link</p>
+                        <p>${response[0].idCardLink}</p>
+                    </div>
+                    <div class="activity">
+                        <p>Business Certificate Link</p>
+                        <p>${response[0].businessCertificateLink}</p>
+                    </div>
+                    <div class="activity">
+                        <p>Bank Statement Link</p>
+                        <p>${response[0].bankStatementLink}</p>
+                    </div>
+                    <div class="activity">
+                        <p>Loan Amount</p>
+                        <p>${response[0].LoanAmount}</p>
+                    </div>
+                    <div class="activity">
+                        <p>Interest Rate</p>
+                        <p>${response[0].interestRate}</p>
+                    </div>
+                    <div class="activity">
+                        <p>Payment per Interval</p>
+                        <p>${response[0].PaymentPer}</p>
+                    </div>
+                   `;
+
+            }
+        }
+    }
 }
