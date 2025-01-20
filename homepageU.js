@@ -46,6 +46,7 @@ function checkLogin(){
                     console.log("User Details stored in localStorage!");
 
                     console.log("You are logged in as " + user.username);
+                    document.querySelector('.user').innerHTML += `<p>${user.username}</p>`;
                     // showQuestionnaire();
                 }
             }

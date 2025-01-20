@@ -80,6 +80,7 @@ function adminResponse(){
                         else{
                             // window.location.href = 'admin.html';
                             console.log("admin response, you are an admin")
+                            document.querySelector('.user').innerHTML += `<p>${user.username}</p>`;
                         }
                     }
                 }
@@ -88,7 +89,7 @@ function adminResponse(){
     
 }
 
-function getApplications(){
+function getApplicationns(){
     // get all applications and put in applicationsHold
     if(localStorage.getItem('user')){
         var user = JSON.parse(localStorage.getItem('user'));
@@ -105,8 +106,10 @@ function getApplications(){
                console.log("Application Response Data is: ", response)
 
                 // let applciIdBox = document.querySelector('.application p:nth-of-type(1)')
-               response.forEach(application => {
                 let applicationsHold = document.querySelector('.applicationsHold');
+                applicationsHold.innerHTML = ` `;
+               response.forEach(application => {
+               
 
                 applicationsHold.innerHTML += `
                 <div class="application" onclick="activityShow('${application.id}','${application.businessInfo.businessName}','${application.loanAmount}','${ new Date(application.dateSubmitted).toDateString() }','${application.loanStatus}')">
@@ -126,7 +129,7 @@ function getApplications(){
         }
     }
 }
-getApplications()
+getApplicationns()
 
 
 
@@ -1084,3 +1087,175 @@ function otherActivityApproved(applicID){
         }
     }
 }
+
+
+
+// -----------------------------------------------------------------------------------------------
+// this portion is the functions for sorting the applications in the dashboard
+// -----------------------------------------------------------------------------------------------
+
+function getSubmittedApplications(){
+    // get all applications and put in applicationsHold
+    if(localStorage.getItem('user')){
+        var user = JSON.parse(localStorage.getItem('user'));
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'https://smebackendmain.onrender.com/api/adminGetAll', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify({
+            username: user.username
+        }));
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState == 4 && xhr.status == 200){
+                var response = JSON.parse(xhr.responseText);
+                // code from here
+               console.log("Application Response Data is: ", response)
+
+                // let applciIdBox = document.querySelector('.application p:nth-of-type(1)')
+                let applicationsHold = document.querySelector('.applicationsHold');
+                applicationsHold.innerHTML = ` `;
+               response.forEach(application => {
+               
+                if(application.loanStatus == "Submitted"){
+                applicationsHold.innerHTML += `
+                <div class="application" onclick="activityShow('${application.id}','${application.businessInfo.businessName}','${application.loanAmount}','${ new Date(application.dateSubmitted).toDateString() }','${application.loanStatus}')">
+                    <p>#${application.id}</p>
+                    <p>${application.businessInfo.businessName}</p>
+                    <p>${application.loanAmount}</p>
+                    <p>${ new Date(application.dateSubmitted).toLocaleString("en-US", {
+                        year: "numeric",
+                        month: "short",
+                        day: "numeric"
+                      }) }
+                    </p>
+                    <p>${application.loanStatus}</p>
+                </div>`
+            }
+               });
+            }
+        }
+    }
+}
+function getUnderReviewApplications(){
+    // get all applications and put in applicationsHold
+    if(localStorage.getItem('user')){
+        var user = JSON.parse(localStorage.getItem('user'));
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'https://smebackendmain.onrender.com/api/adminGetAll', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify({
+            username: user.username
+        }));
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState == 4 && xhr.status == 200){
+                var response = JSON.parse(xhr.responseText);
+                // code from here
+               console.log("Application Response Data is: ", response)
+
+                // let applciIdBox = document.querySelector('.application p:nth-of-type(1)')
+                let applicationsHold = document.querySelector('.applicationsHold');
+                applicationsHold.innerHTML = ` `;
+               response.forEach(application => {
+               
+                if(application.loanStatus == "Accepted" || application.loanStatus == "Pending"){
+                applicationsHold.innerHTML += `
+                <div class="application" onclick="activityShow('${application.id}','${application.businessInfo.businessName}','${application.loanAmount}','${ new Date(application.dateSubmitted).toDateString() }','${application.loanStatus}')">
+                    <p>#${application.id}</p>
+                    <p>${application.businessInfo.businessName}</p>
+                    <p>${application.loanAmount}</p>
+                    <p>${ new Date(application.dateSubmitted).toLocaleString("en-US", {
+                        year: "numeric",
+                        month: "short",
+                        day: "numeric"
+                      }) }
+                    </p>
+                    <p>${application.loanStatus}</p>
+                </div>`
+            }
+               });
+            }
+        }
+    }
+}
+function getApprovedApplications(){
+    // get all applications and put in applicationsHold
+    if(localStorage.getItem('user')){
+        var user = JSON.parse(localStorage.getItem('user'));
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'https://smebackendmain.onrender.com/api/adminGetAll', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify({
+            username: user.username
+        }));
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState == 4 && xhr.status == 200){
+                var response = JSON.parse(xhr.responseText);
+                // code from here
+               console.log("Application Response Data is: ", response)
+
+                // let applciIdBox = document.querySelector('.application p:nth-of-type(1)')
+                let applicationsHold = document.querySelector('.applicationsHold');
+                applicationsHold.innerHTML = ` `;
+               response.forEach(application => {
+               
+                if(application.loanStatus == "Approved"){
+                applicationsHold.innerHTML += `
+                <div class="application" onclick="activityShow('${application.id}','${application.businessInfo.businessName}','${application.loanAmount}','${ new Date(application.dateSubmitted).toDateString() }','${application.loanStatus}')">
+                    <p>#${application.id}</p>
+                    <p>${application.businessInfo.businessName}</p>
+                    <p>${application.loanAmount}</p>
+                    <p>${ new Date(application.dateSubmitted).toLocaleString("en-US", {
+                        year: "numeric",
+                        month: "short",
+                        day: "numeric"
+                      }) }
+                    </p>
+                    <p>${application.loanStatus}</p>
+                </div>`
+            }
+               });
+            }
+        }
+    }
+}
+function getRejectedApplications(){
+    // get all applications and put in applicationsHold
+    if(localStorage.getItem('user')){
+        var user = JSON.parse(localStorage.getItem('user'));
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'https://smebackendmain.onrender.com/api/adminGetAll', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify({
+            username: user.username
+        }));
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState == 4 && xhr.status == 200){
+                var response = JSON.parse(xhr.responseText);
+                // code from here
+               console.log("Application Response Data is: ", response)
+
+                // let applciIdBox = document.querySelector('.application p:nth-of-type(1)')
+                let applicationsHold = document.querySelector('.applicationsHold');
+                applicationsHold.innerHTML = ` `;
+               response.forEach(application => {
+               
+                if(application.loanStatus == "Rejected"){
+                applicationsHold.innerHTML += `
+                <div class="application" onclick="activityShow('${application.id}','${application.businessInfo.businessName}','${application.loanAmount}','${ new Date(application.dateSubmitted).toDateString() }','${application.loanStatus}')">
+                    <p>#${application.id}</p>
+                    <p>${application.businessInfo.businessName}</p>
+                    <p>${application.loanAmount}</p>
+                    <p>${ new Date(application.dateSubmitted).toLocaleString("en-US", {
+                        year: "numeric",
+                        month: "short",
+                        day: "numeric"
+                      }) }
+                    </p>
+                    <p>${application.loanStatus}</p>
+                </div>`
+            }
+               });
+            }
+        }
+    }
+}
+

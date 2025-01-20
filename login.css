@@ -1,5 +1,5 @@
 body{
-    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(../laptopMan.jpg);
+    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(laptopMan.jpg);
     background-size: cover;
 }
 main{

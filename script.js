@@ -120,9 +120,30 @@ function adminLogout(){
     window.location.href = 'login.html';
 }
 
+function calculateAge(dobString) {
+    // Convert the DOB string into a Date object
+    const dob = new Date(dobString);
+    
+    // Get today's date
+    const today = new Date();
+    
+    // Calculate the age
+    let age = today.getFullYear() - dob.getFullYear();
+    
+    // Adjust if the birthday hasn't occurred yet this year
+    const monthDifference = today.getMonth() - dob.getMonth();
+    const dayDifference = today.getDate() - dob.getDate();
+    if (monthDifference < 0 || (monthDifference === 0 && dayDifference < 0)) {
+      age--;
+    }
+    
+    // Return the age as a string
+    return age.toString();
+  }
+
 function businessShow(){
     let fullname = document.querySelector('.fullnameInput').value;
-    let dateofbirth = document.querySelector('.dobInput').value;
+    let dateofbirth = calculateAge(document.querySelector('.dobInput').value);
     let gender = document.querySelector('#genderSelect').value;
     let email = document.querySelector('.emailInput').value;
     let phone = document.querySelector('.phoneNumberInput').value;

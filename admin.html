@@ -6,6 +6,7 @@
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="all.css">
     <link rel="stylesheet" href="admin.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
@@ -16,11 +17,11 @@
         </div>
 
         <nav>
-            <button type="button" id="AllApplic">All</button>
-            <button type="button" id="SubmittedApplic">Submitted</button>
-            <button type="button" id="UnderReviewApplic">Under Review</button>
-            <button type="button" id="ApprovedApplic">Approved</button>
-            <button type="button" id="RejectedApplic">Rejected</button>
+            <button type="button" id="AllApplic" onclick="getApplicationns()">All</button>
+            <button type="button" id="SubmittedApplic" onclick="getSubmittedApplications()">Submitted</button>
+            <button type="button" id="UnderReviewApplic" onclick="getUnderReviewApplications()">Under Review</button>
+            <button type="button" id="ApprovedApplic" onclick="getApprovedApplications()">Approved</button>
+            <button type="button" id="RejectedApplic" onclick="getRejectedApplications()">Rejected</button>
             <button type="button" id="Reports" onclick="showGraphs()">Reports</button>
         </nav>
 
